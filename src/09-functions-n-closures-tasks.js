@@ -187,10 +187,11 @@ function logger(func, logFunc) {
  */
 function partialUsingArguments(fn, ...args1) {
   const first = args1;
-  return function (...args) {
+  function part(...args) {
     const total = first.concat(args);
     return fn(...total);
-  };
+  }
+  return part;
 }
 
 
@@ -213,10 +214,11 @@ function partialUsingArguments(fn, ...args1) {
  */
 function getIdGeneratorFunction(startFrom) {
   let iter = startFrom;
-  return function () {
+  function gen() {
     iter += 1;
     return iter - 1;
-  };
+  }
+  return gen;
 }
 
 
